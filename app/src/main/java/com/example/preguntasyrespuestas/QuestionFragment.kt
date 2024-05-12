@@ -11,8 +11,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 
-
+/**
+ * Fragmento que muestra una pregunta y opciones de respuesta.
+ * Permite al usuario seleccionar una respuesta y verifica si es correcta.
+ */
 class QuestionFragment : Fragment() {
+    // Lista de preguntas con sus respectivas opciones y respuesta correcta.
     val questions = mutableListOf<QuestionData>(
         QuestionData("¿Cuál es la capital de Francia?", listOf("Madrid", "París", "Londres", "Berlín"), "París"),
         QuestionData("¿Quién pintó la Mona Lisa?", listOf("Pablo Picasso", "Leonardo da Vinci", "Vincent van Gogh", "Salvador Dalí"), "Leonardo da Vinci"),
@@ -37,11 +41,16 @@ class QuestionFragment : Fragment() {
         }
 
         view.findViewById<Button>(R.id.submitButton).setOnClickListener {
-            checkAnswer(optionsLayout)
+            checkAnswer(optionsLayout) // Verifica la respuesta seleccionada por el usuario.
         }
         return view
     }
 
+    /**
+     * Método para verificar la respuesta seleccionada por el usuario.
+     * Muestra un mensaje de respuesta correcta o incorrecta.
+     * @param optionsLayout Layout que contiene las opciones de respuesta.
+     */
     private fun checkAnswer(optionsLayout: RadioGroup) {
         val selectedOptionId = optionsLayout.checkedRadioButtonId
         if (selectedOptionId != -1) {
@@ -49,13 +58,18 @@ class QuestionFragment : Fragment() {
             val selectedAnswer = selectedRadioButton.text.toString()
             val isCorrect = selectedAnswer == currentQuestion.correctAnswer
             val explanation = if (isCorrect) "¡Respuesta correcta!" else "Respuesta incorrecta. La respuesta correcta es: ${currentQuestion.correctAnswer}"
-            showAnswerFragment(isCorrect, explanation)
-            currentQuestion.userAnswer = selectedAnswer
+            showAnswerFragment(isCorrect, explanation) // Muestra el fragmento de respuesta.
+            currentQuestion.userAnswer = selectedAnswer // Guarda la respuesta del usuario en el objeto de pregunta actual.
         } else {
             Toast.makeText(requireContext(), "Selecciona una respuesta", Toast.LENGTH_SHORT).show()
         }
     }
 
+    /**
+     * Método para mostrar el fragmento de respuesta.
+     * @param isCorrect Indica si la respuesta seleccionada por el usuario es correcta.
+     * @param explanation Texto explicativo sobre la respuesta.
+     */
     private fun showAnswerFragment(isCorrect: Boolean, explanation: String) {
         val transaction = requireActivity().supportFragmentManager.beginTransaction()
         transaction.replace(R.id.fragment_container, AnswerFragment.newInstance(isCorrect, explanation))
