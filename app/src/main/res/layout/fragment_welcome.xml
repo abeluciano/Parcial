@@ -12,7 +12,7 @@
         android:textStyle="bold"
         android:layout_marginBottom="16dp"/>
 
-    <!-- Puedes agregar más elementos como descripciones, imágenes, etc. -->
+
 
     <Button
         android:id="@+id/startButton"
