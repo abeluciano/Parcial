@@ -52,10 +52,12 @@ class AnswerFragment : Fragment() {
             transaction.addToBackStack(null)
             transaction.commit()
         } else {
-            // Implementa la lógica para mostrar la puntuación final aquí
-            // Por ejemplo:
-            // Toast.makeText(requireContext(), "Fin del juego", Toast.LENGTH_SHORT).show()
-            // Puedes mostrar la puntuación total en un nuevo fragmento o actividad
+            val totalQuestions = (parentFragment as QuestionFragment).questions.size
+            val correctAnswers = (parentFragment as QuestionFragment).questions.count { question ->
+                question.userAnswer == question.correctAnswer
+            }
+            val incorrectAnswers = totalQuestions - correctAnswers
+            val scoreMessage = "Has respondido $correctAnswers de $totalQuestions preguntas correctamente."
         }
     }
 }

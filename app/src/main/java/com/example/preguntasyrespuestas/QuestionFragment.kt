@@ -50,6 +50,7 @@ class QuestionFragment : Fragment() {
             val isCorrect = selectedAnswer == currentQuestion.correctAnswer
             val explanation = if (isCorrect) "¡Respuesta correcta!" else "Respuesta incorrecta. La respuesta correcta es: ${currentQuestion.correctAnswer}"
             showAnswerFragment(isCorrect, explanation)
+            currentQuestion.userAnswer = selectedAnswer
         } else {
             Toast.makeText(requireContext(), "Selecciona una respuesta", Toast.LENGTH_SHORT).show()
         }
