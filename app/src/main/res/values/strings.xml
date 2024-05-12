@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Preguntas y respuestas</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Respuesta">Enviar respuesta</string>
+    <string name="bienbenida">Bienvenido al juego de preguntas y respuestas</string>
+    <string name="comenzar">Comenzar juego</string>
+    <string name="siguiente">Siguiente pregunta</string>
 </resources>
