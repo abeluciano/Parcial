@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Preguntas y respuestas</string>
     <string name="Respuesta">Enviar respuesta</string>
-    <string name="bienbenida">Bienvenido al juego de preguntas y respuestas</string>
+    <string name="bienbenida">Bienvenido al juego de preguntas y respuestas de Cultura General</string>
     <string name="comenzar">Comenzar juego</string>
     <string name="siguiente">Siguiente pregunta</string>
 </resources>
